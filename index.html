@@ -17,8 +17,13 @@
 </div>
   <!--<iframe src="https://amelia-chat-overlay.com:9001" frameBorder="0" width="300" height="500" />-->
   <!--<iframe src="https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/" frameBorder="0" />-->
-<div class="resizable">
-  <div>Hola amigos</div>
+<div class='resizable'>
+  <div class='resizers'>
+    <div class='resizer top-left'></div>
+    <div class='resizer top-right'></div>
+    <div class='resizer bottom-left'></div>
+    <div class='resizer bottom-right'></div>
+  </div>
 </div>
 <script>
 function makeResizableDiv(div) {
@@ -46,5 +51,35 @@ function makeResizableDiv(div) {
 
 makeResizableDiv('.resizable')
 </script>
+  <style>
+    .resizable .resizers .resizer{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #4286f4;
+  position: absolute;
+}
+.resizable .resizers .resizer.top-left {
+  left: -5px;
+  top: -5px;
+  cursor: nwse-resize; /*resizer cursor*/
+}
+.resizable .resizers .resizer.top-right {
+  right: -5px;
+  top: -5px;
+  cursor: nesw-resize;
+}
+.resizable .resizers .resizer.bottom-left {
+  left: -5px;
+  bottom: -5px;
+  cursor: nesw-resize;
+}
+.resizable .resizers .resizer.bottom-right {
+  right: -5px;
+  bottom: -5px;
+  cursor: nwse-resize;
+}
+  </style>
   </body>
 </html>
