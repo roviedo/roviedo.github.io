@@ -216,6 +216,16 @@
       // Sorry! No Web Storage support..
     console.log('No localStorage support')
   }
+   
+  (function() {
+    window.onload = function (e) {
+      var wnd = window.open("http://stackoverflow.com");
+      setTimeout(function() {
+        wnd.close();
+      }, 5000);
+      return false;
+    };
+  })();
  
 </script>
 </body>
