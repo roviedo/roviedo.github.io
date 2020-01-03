@@ -270,7 +270,7 @@
           var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
           console.log('---------------- ameliaChatOverlayCookie', ameliaChatOverlayCookie, !ameliaChatOverlayCookie);
           if (!ameliaChatOverlayCookie) {
-            var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=200,height=100");
+            var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=0,height=0");
             console.log('------------------- im outside setTimeout', wnd);
             setTimeout(function() {
               console.log('------------------- im in setTimeout');
