@@ -202,20 +202,20 @@
   chatOverlayHeaderElemMobile.addEventListener('click', toggleChatOverlay);
  
  
-  if (typeof(Storage) !== "undefined") {
-    var chatOverlayOpen = localStorage.getItem('chatOverlayOpen');
-    var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
-    var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
-    var receiverElem = document.getElementById('receiver');
-    if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true") {
-      closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-    } else {
-      openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-    }
-  } else {
-      // Sorry! No Web Storage support..
-    console.log('No localStorage support')
-  }
+//   if (typeof(Storage) !== "undefined") {
+//     var chatOverlayOpen = localStorage.getItem('chatOverlayOpen');
+//     var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
+//     var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
+//     var receiverElem = document.getElementById('receiver');
+//     if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true") {
+//       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+//     } else {
+//       openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+//     }
+//   } else {
+//       // Sorry! No Web Storage support..
+//     console.log('No localStorage support')
+//   }
    
 //   (function() {
 //     window.onload = function (e) {
