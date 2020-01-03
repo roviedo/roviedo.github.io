@@ -214,6 +214,7 @@
  
   if (typeof(Storage) !== "undefined") {
     var chatOverlayOpen = localStorage.getItem('chatOverlayOpen');
+    console.log('----------- chatOverlayOpen', chatOverlayOpen);
     var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
     var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
     var receiverElem = document.getElementById('receiver');
