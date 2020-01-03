@@ -258,7 +258,12 @@
                navigator.userAgent.indexOf('CriOS') == -1 &&
                navigator.userAgent.indexOf('FxiOS') == -1;
    
-   if (isSafari) {
+   var ua = window.navigator.userAgent;
+   var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+   var webkit = !!ua.match(/WebKit/i);
+   var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+   
+   if (isSafari || iOSSafari) {
       (function() {
         document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
           e.preventDefault();
