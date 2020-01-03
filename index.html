@@ -231,7 +231,8 @@
 //     };
 //   })();
    (function() {
-    document.getElementById("target").onclick = function (e) {
+    document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
+      e.preventDefault();
       var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=200,height=100");
       console.log('------------------- im outside setTimeout', wnd);
       setTimeout(function() {
