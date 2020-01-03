@@ -230,15 +230,44 @@
 //       return false;
 //     };
 //   })();
+
+   function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return false;
+  }
+   
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+   
    (function() {
     document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
       e.preventDefault();
-      var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=200,height=100");
-      console.log('------------------- im outside setTimeout', wnd);
-      setTimeout(function() {
-        wnd.close();
-        document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
-      }, 2000);
+      var test = getCookie('test');
+      console.log('---------------- test', test);
+      if (!test) {
+        var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=200,height=100");
+        console.log('------------------- im outside setTimeout', wnd);
+        setTimeout(function() {
+          wnd.close();
+          document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
+        }, 2000);
+        setCookie('test', true, 3);
+      }
       return false;
     };
   })();
