@@ -215,11 +215,11 @@
   if (typeof(Storage) !== "undefined") {
     var chatOverlayOpen = localStorage.getItem('chatOverlayOpen');
     var chatOverlayDefaultStateClosed = true;
-    console.log('----------- chatOverlayOpen', chatOverlayOpen, chatOverlayOpen === "");
+    console.log('----------- chatOverlayOpen', chatOverlayOpen, chatOverlayOpen === null);
     var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
     var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
     var receiverElem = document.getElementById('receiver');
-    if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === "" && chatOverlayDefaultStateClosed)) {
+    if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed)) {
       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
     } else {
       console.log('---------- am i opening this');
