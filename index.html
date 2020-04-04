@@ -277,7 +277,11 @@
             }, 5000);
             // document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
             
-          
+            console.log('before the time out');
+             setTimeout(function() {
+                 console.log('inside ready to reload');
+                 document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
+             }, 3000);
           
 //           var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
 //           if (!ameliaChatOverlayCookie) {
@@ -296,11 +300,6 @@
 //           document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
 //         }, 3000);
       })();
-     console.log('before the time out');
-     setTimeout(function() {
-          console.log('inside ready to reload');
-          document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
-        }, 3000);
    }
    
    //Chat Overlay drag and drop
