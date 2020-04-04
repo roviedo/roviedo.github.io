@@ -201,16 +201,6 @@
   var chatOverlayHeaderElemMobile = document.getElementsByClassName('chat-overlay-header-mobile')[0];
   chatOverlayHeaderElemMobile.addEventListener('click', toggleChatOverlay);
  
-   
-   var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
-               navigator.userAgent &&
-               navigator.userAgent.indexOf('CriOS') == -1 &&
-               navigator.userAgent.indexOf('FxiOS') == -1;
-   
-   var ua = window.navigator.userAgent;
-   var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
-   var webkit = !!ua.match(/WebKit/i);
-   var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
  
   if (typeof(Storage) !== "undefined") {
     var chatOverlayOpen = localStorage.getItem('chatOverlayOpen');
@@ -264,6 +254,18 @@
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
    
+   
+   /// Start of Safari 3rd party cookies workaround (Apple browsers doesn't allow third parties cookies to be set without user action)
+   var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent &&
+               navigator.userAgent.indexOf('CriOS') == -1 &&
+               navigator.userAgent.indexOf('FxiOS') == -1;
+   
+   var ua = window.navigator.userAgent;
+   var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+   var webkit = !!ua.match(/WebKit/i);
+   var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+   
    if (isSafari || iOSSafari) {
       (function() {
         document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
@@ -302,7 +304,9 @@
       })();
    }
    
-   //Chat Overlay drag and drop
+   /// END of Safari 3rd party cookies workaround
+   
+   //START of Chat Overlay drag and drop
       var dragItem = document.querySelector(".chat-overlay");
       var touchItem = document.querySelector(".chat-overlay-header-img.open");
       var chatOverlayWrapper = document.querySelector('.chat-overlay-wrapper');
@@ -386,6 +390,7 @@
       function setTranslate(xPos, yPos, el) {
         el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
       }
+   /// END of Chat Overlay drag and drop
  
 </script>
 </body>
