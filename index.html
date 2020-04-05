@@ -231,23 +231,24 @@
    var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
    
    if (isSafari || iOSSafari) {
-      (function() {
-        document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
-          e.preventDefault();
+//       (function() {
+//         document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
+//           e.preventDefault();
           
           
-          var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
-          if (!ameliaChatOverlayCookie) {
-            var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=1,height=1");
-            setTimeout(function() {
-              wnd.close();
-              document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
-            }, 3000);
-            setCookie('ameliaChatOverlay', true, 3);
-          }
-          return false;
-        };
-      })();
+//           var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
+//           if (!ameliaChatOverlayCookie) {
+//             var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=1,height=1");
+//             setTimeout(function() {
+//               wnd.close();
+//               document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
+//             }, 3000);
+//             setCookie('ameliaChatOverlay', true, 3);
+//           }
+//           return false;
+//         };
+//       })();
+        window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=10,height=10");
    }
    
    /// END of Safari 3rd party cookies workaround
