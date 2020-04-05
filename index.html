@@ -252,13 +252,13 @@
        document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
            e.preventDefault();
           if(windowObjectReference == null || windowObjectReference.closed) {
-            console.log('test v6');
+            console.log('test v7');
               var height=500;
               var width=500;
               // var t=document.body.scrollHeight - height + 250;
               // var l=document.body.clientWidth - width + 250;
-              var l = (document.body.clientWidth/2)-(width/2);
-              var t = (document.body.scrollHeight/2)-(height/2);
+              var l = document.body.clientWidth - (width/2);
+              var t = document.body.scrollHeight - (height/2);
               windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", "", 'height='+height+', width='+width+', left='+l+', top='+t);
                //windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", "", "width=200,height=200");
           } else {
