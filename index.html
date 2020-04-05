@@ -157,38 +157,38 @@
 </style>
  <script>
  
-  function openChatOverlay (imgElemOpen, imgElemClose) {
-    document.getElementsByClassName('chat-overlay')[0].classList.add("chat-overlay-open");
-    document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-closed");
-    document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.remove('close');
-    imgElemClose.style.opacity = 1;
-    imgElemOpen.style.opacity = 0;
-    localStorage.setItem('chatOverlayOpen', true);
-  }
+//   function openChatOverlay (imgElemOpen, imgElemClose) {
+//     document.getElementsByClassName('chat-overlay')[0].classList.add("chat-overlay-open");
+//     document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-closed");
+//     document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.remove('close');
+//     imgElemClose.style.opacity = 1;
+//     imgElemOpen.style.opacity = 0;
+//     localStorage.setItem('chatOverlayOpen', true);
+//   }
  
-  function closeChatOverlay (imgElemOpen, imgElemClose) {
-    document.getElementsByClassName('chat-overlay')[0].classList.add("chat-overlay-closed");
-    document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-open");
-    document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.add('close');
-    imgElemOpen.style.opacity = 1;
-    imgElemClose.style.opacity = 0;
-    localStorage.setItem('chatOverlayOpen', false);
-  }
+//   function closeChatOverlay (imgElemOpen, imgElemClose) {
+//     document.getElementsByClassName('chat-overlay')[0].classList.add("chat-overlay-closed");
+//     document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-open");
+//     document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.add('close');
+//     imgElemOpen.style.opacity = 1;
+//     imgElemClose.style.opacity = 0;
+//     localStorage.setItem('chatOverlayOpen', false);
+//   }
  
-  function toggleChatOverlay () {
-    /**
-     * Toggles opening and closing of the chatOverlay
-     * @returns - no return
-     */
-    var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
-    var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
-    var receiverElem = document.getElementById('receiver');
-    if (typeof receiverElem !== 'undefined' && receiverElem.classList.contains('close')) {
-      openChatOverlay(chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-    } else {
-      closeChatOverlay(chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-    }
-  }
+//   function toggleChatOverlay () {
+//     /**
+//      * Toggles opening and closing of the chatOverlay
+//      * @returns - no return
+//      */
+//     var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
+//     var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
+//     var receiverElem = document.getElementById('receiver');
+//     if (typeof receiverElem !== 'undefined' && receiverElem.classList.contains('close')) {
+//       openChatOverlay(chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+//     } else {
+//       closeChatOverlay(chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+//     }
+//   }
    
    var windowObjectReference = null;
    document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
