@@ -195,31 +195,8 @@
       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
     }
   }
- 
-  var chatOverlayHeaderElem = document.getElementsByClassName('chat-overlay-header')[0];
-  chatOverlayHeaderElem.addEventListener('click', toggleChatOverlay);
-  var chatOverlayHeaderElemMobile = document.getElementsByClassName('chat-overlay-header-mobile')[0];
-  chatOverlayHeaderElemMobile.addEventListener('click', toggleChatOverlay);
- 
- 
-  if (typeof(Storage) !== "undefined") {
-    var chatOverlayOpen = localStorage.getItem('chatOverlayOpen');
-    var chatOverlayDefaultStateClosed = true;
-    var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
-    var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
-    var receiverElem = document.getElementById('receiver');
-    if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed)) {
-      closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-    } else {
-      openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-    }
-  } else {
-      // Sorry! No Web Storage support..
-    console.log('No localStorage support')
-  }
- 
-
-   function getCookie(cname) {
+   
+  function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -241,7 +218,6 @@
     var expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
-   
    
    /// Start of Safari 3rd party cookies workaround (Apple browsers doesn't allow third parties cookies to be set without user action)
    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
@@ -275,6 +251,28 @@
    }
    
    /// END of Safari 3rd party cookies workaround
+ 
+  var chatOverlayHeaderElem = document.getElementsByClassName('chat-overlay-header')[0];
+  chatOverlayHeaderElem.addEventListener('click', toggleChatOverlay);
+  var chatOverlayHeaderElemMobile = document.getElementsByClassName('chat-overlay-header-mobile')[0];
+  chatOverlayHeaderElemMobile.addEventListener('click', toggleChatOverlay);
+ 
+ 
+  if (typeof(Storage) !== "undefined") {
+    var chatOverlayOpen = localStorage.getItem('chatOverlayOpen');
+    var chatOverlayDefaultStateClosed = true;
+    var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
+    var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
+    var receiverElem = document.getElementById('receiver');
+    if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed)) {
+      closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+    } else {
+      openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+    }
+  } else {
+      // Sorry! No Web Storage support..
+    console.log('No localStorage support')
+  }
    
    //START of Chat Overlay drag and drop
       var dragItem = document.querySelector(".chat-overlay");
