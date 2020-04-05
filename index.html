@@ -190,7 +190,7 @@
     var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
     var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
     var receiverElem = document.getElementById('receiver');
-    if (receiverElem.classList.contains('close')) {
+    if (typeof receiverElem !== 'undefined' && receiverElem.classList.contains('close')) {
       openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
     } else {
       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
