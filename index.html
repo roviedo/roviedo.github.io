@@ -248,9 +248,9 @@
 //           return false;
 //         };
 //       })();
+       var windowObjectReference = null;
        document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
            e.preventDefault();
-          var windowObjectReference = null;
           if(windowObjectReference == null || windowObjectReference.closed) { 
               windowObjectReference = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=500,height=500");
           } else {
