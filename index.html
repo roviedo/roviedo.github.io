@@ -11,9 +11,6 @@
         <div class="chat-overlay-header-mobile close">
         <img class="close" src="/close.png" alt="toggle chat overlay" />
       </div>
-<!--       <iframe id="receiver" class="close" src="https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
-        <p>Your browser does not support iframes.</p>
-      </iframe> -->
       <div class="chat-overlay-header">
         <img class="chat-overlay-header-img close" src="/close.png" alt="toggle chat overlay" />
         <img class="chat-overlay-header-img open" src="/icon.png" alt="toggle chat overlay" />
@@ -160,9 +157,7 @@
 </style>
  <script>
  
-  function openChatOverlay (receiverElem, imgElemOpen, imgElemClose) {
-//     document.getElementById('receiver').classList.add("open");
-//     document.getElementById('receiver').classList.remove("close");
+  function openChatOverlay (imgElemOpen, imgElemClose) {
     document.getElementsByClassName('chat-overlay')[0].classList.add("chat-overlay-open");
     document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-closed");
     document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.remove('close');
@@ -171,9 +166,7 @@
     localStorage.setItem('chatOverlayOpen', true);
   }
  
-  function closeChatOverlay (receiverElem, imgElemOpen, imgElemClose) {
-//     document.getElementById('receiver').classList.add("close");
-//     document.getElementById('receiver').classList.remove("open");
+  function closeChatOverlay (imgElemOpen, imgElemClose) {
     document.getElementsByClassName('chat-overlay')[0].classList.add("chat-overlay-closed");
     document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-open");
     document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.add('close');
@@ -191,45 +184,11 @@
     var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
     var receiverElem = document.getElementById('receiver');
     if (typeof receiverElem !== 'undefined' && receiverElem.classList.contains('close')) {
-      openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+      openChatOverlay(chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
     } else {
-      closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+      closeChatOverlay(chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
     }
   }
-   
-  function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return false;
-  }
-   
-  function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
-   
-   /// Start of Safari 3rd party cookies workaround (Apple browsers doesn't allow third parties cookies to be set without user action)
-//    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
-//                navigator.userAgent &&
-//                navigator.userAgent.indexOf('CriOS') == -1 &&
-//                navigator.userAgent.indexOf('FxiOS') == -1;
-   
-//    var ua = window.navigator.userAgent;
-//    var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
-//    var webkit = !!ua.match(/WebKit/i);
-//    var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
    
    var windowObjectReference = null;
    document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
@@ -238,12 +197,9 @@
         console.log('test v7');
           var height=500;
           var width=500;
-          // var t=document.body.scrollHeight - height + 250;
-          // var l=document.body.clientWidth - width + 250;
           var l = document.body.clientWidth - (width/2);
           var t = document.body.scrollHeight - (height/2);
           windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", "", 'height='+height+', width='+width+', left='+l+', top='+t);
-           //windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", "", "width=200,height=200");
       } else {
         windowObjectReference.focus();
       }
@@ -256,35 +212,6 @@
   chatOverlayHeaderElem.addEventListener('click', toggleChatOverlay);
   var chatOverlayHeaderElemMobile = document.getElementsByClassName('chat-overlay-header-mobile')[0];
   chatOverlayHeaderElemMobile.addEventListener('click', toggleChatOverlay);
- 
- 
-//   if (typeof(Storage) !== "undefined") {
-//     var chatOverlayOpen = localStorage.getItem('chatOverlayOpen');
-//     var chatOverlayDefaultStateClosed = true;
-//     var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
-//     var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
-//     var receiverElem = document.getElementById('receiver');
-
-    
-//     //     if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed)) {
-//     //       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-//     //     } else {
-//     //       openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-//     //     }
-    
-//     // Conditional below added to support Safari third party cookie issue (original conditional above without)
-//     var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
-//     if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
-//       console.log('im closing overlay');
-//       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-//     } else {
-//       console.log('im opening overlay');
-//       openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-//     }
-//   } else {
-//       // Sorry! No Web Storage support..
-//     console.log('No localStorage support')
-//   }
  
 </script>
 </body>
