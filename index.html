@@ -253,15 +253,15 @@
            e.preventDefault();
           if(windowObjectReference == null || windowObjectReference.closed) {
             console.log('test v3');
-//               var height=500;
-//               var width=500;
-//               var t=document.body.scrollHeight - height - 100;
-//               var l=document.body.clientWidth - width - 100;
+              var height=500;
+              var width=500;
+              var t=document.body.scrollHeight - height - 20;
+              var l=document.body.clientWidth - width - 20;
               // windowObjectReference = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=500,height=500");
               // 'height='+height+', width='+width+', left='+l+', top='+t
 //                console.log('t', t, 'l', l, 'height='+height+', width='+width+', left='+l+', top='+t);
-              //windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", "", 'height='+height+', width='+width+', left='+l+', top='+t);
-               windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", "", "width=200,height=200");
+              windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", "", 'height='+height+', width='+width+', left='+l+', top='+t);
+               //windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", "", "width=200,height=200");
           } else {
             windowObjectReference.focus();
           }
