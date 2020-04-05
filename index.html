@@ -250,8 +250,13 @@
 //       })();
        document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
            e.preventDefault();
-          window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=500,height=500");
-          return false;
+          var windowObjectReference;
+          if(windowObjectReference == null || windowObjectReference.closed) { 
+              windowObjectReference = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=500,height=500");
+          } else {
+            windowObjectReference.focus();
+          }
+         return false;
        }
      }
    
