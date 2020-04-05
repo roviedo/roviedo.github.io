@@ -56,26 +56,6 @@
   box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.5);
 }
  
-#receiver {
-  transition: opacity 1s ease-in-out;
-  opacity: 1;
-  background: rgba(0, 0, 0, 0.5);
-  box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.5);
-  border-radius: 0.5rem;
-}
- 
-#receiver.close {
-  height: 0;
-  opacity: 0;
-  overflow: hidden;
-}
- 
-#receiver.open {
-  height: 100%;
-  opacity: 1;
-  overflow: hidden;
-}
- 
 .chat-overlay-header-img {
   position: absolute;
   max-width: 14px;
@@ -121,22 +101,6 @@
     display: none;
   }
  
-  #receiver {
-    border-radius: 0;
-  }
- 
-  #receiver.close {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-  }
- 
-  #receiver.open {
-    height: 91%;
-    opacity: 1;
-    overflow: hidden;
-  }
- 
   .chat-overlay-open {
     height: 100%;
     bottom: 0px;
@@ -156,39 +120,6 @@
 }
 </style>
  <script>
- 
-//   function openChatOverlay (imgElemOpen, imgElemClose) {
-//     document.getElementsByClassName('chat-overlay')[0].classList.add("chat-overlay-open");
-//     document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-closed");
-//     document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.remove('close');
-//     imgElemClose.style.opacity = 1;
-//     imgElemOpen.style.opacity = 0;
-//     localStorage.setItem('chatOverlayOpen', true);
-//   }
- 
-//   function closeChatOverlay (imgElemOpen, imgElemClose) {
-//     document.getElementsByClassName('chat-overlay')[0].classList.add("chat-overlay-closed");
-//     document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-open");
-//     document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.add('close');
-//     imgElemOpen.style.opacity = 1;
-//     imgElemClose.style.opacity = 0;
-//     localStorage.setItem('chatOverlayOpen', false);
-//   }
- 
-//   function toggleChatOverlay () {
-//     /**
-//      * Toggles opening and closing of the chatOverlay
-//      * @returns - no return
-//      */
-//     var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
-//     var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
-//     var receiverElem = document.getElementById('receiver');
-//     if (typeof receiverElem !== 'undefined' && receiverElem.classList.contains('close')) {
-//       openChatOverlay(chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-//     } else {
-//       closeChatOverlay(chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-//     }
-//   }
    
    var windowObjectReference = null;
    document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
@@ -205,13 +136,6 @@
       }
      return false;
    }
-   
-   /// END of Safari 3rd party cookies workaround
- 
-//   var chatOverlayHeaderElem = document.getElementsByClassName('chat-overlay-header')[0];
-//   chatOverlayHeaderElem.addEventListener('click', toggleChatOverlay);
-//   var chatOverlayHeaderElemMobile = document.getElementsByClassName('chat-overlay-header-mobile')[0];
-//   chatOverlayHeaderElemMobile.addEventListener('click', toggleChatOverlay);
  
 </script>
 </body>
