@@ -264,7 +264,16 @@
     var chatOverlayHeaderImgElemOpen = document.getElementsByClassName('chat-overlay-header-img open')[0];
     var chatOverlayHeaderImgElemClose = document.getElementsByClassName('chat-overlay-header-img close')[0];
     var receiverElem = document.getElementById('receiver');
-    if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed)) {
+
+    
+    //     if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed)) {
+    //       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+    //     } else {
+    //       openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+    //     }
+    
+    // Conditional below added to support Safari third party cookie issue (original conditional above without)
+    if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
     } else {
       openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
