@@ -251,9 +251,15 @@
        var windowObjectReference = null;
        document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
            e.preventDefault();
-          if(windowObjectReference == null || windowObjectReference.closed) { 
+          if(windowObjectReference == null || windowObjectReference.closed) {
+              var height=500;
+              var width=500;
+              var t=window.innerHeight-height;
+              var l=window.innerWidth-width;
               // windowObjectReference = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=500,height=500");
-              windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", "", "width=500,height=500,left=500, top=500");
+            // 'height='+height+', width='+width+', left='+l+', top='+t
+            // "width=500,height=500,left=500, top=500"
+              windowObjectReference = window.open("https://sharecare.amelia.com/Amelia/ui/screener/?embed=iframe&bpn_Connect=www.ipsoft.com", 'height='+height+', width='+width+', left='+l+', top='+t, );
           } else {
             windowObjectReference.focus();
           }
