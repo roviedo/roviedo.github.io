@@ -7,8 +7,7 @@
 </head>
 <body>
 <div>
-  <input id="chatOverlayInput" type="text" value="" />
-  <button id="chatOverlayInputSubmit" type="button">Submit</button>
+  <button id="chatOverlayInputSubmit" type="button">Send greeting to Chat Overlay</button>
 </div>
 <div class="chat-overlay chat-overlay-closed">
   <div class="chat-overlay-wrapper">
@@ -26,12 +25,20 @@
 </div>
 <style>
 .chat-overlay {
+  cursor: pointer;
   position: fixed;
   width: 376px;
   height: 500px;
   bottom: 24px;
   right: 24px;
   z-index: 90;
+}
+
+#chatOverlayInputSubmit {
+    color: #FFF;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #000;
 }
  
 .chat-overlay-open {
