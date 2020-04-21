@@ -7,6 +7,7 @@
 </head>
 <body>
 <div>
+  <div><span>Click to send greeting via post message</span></div>
   <button id="chatOverlayInputSubmit" type="button">Send greeting to Chat Overlay</button>
 </div>
 <div class="chat-overlay chat-overlay-closed">
@@ -171,12 +172,11 @@
 </style>
  <script>
   document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
-    console.log('changed and clicked', document.getElementById('chatOverlayInput').value);
-    if (document.getElementById('chatOverlayInput').value !== '' && typeof document.getElementById('chatOverlayInput').value !== 'undefined') {
-      console.log('v6');
-      var iframeElem = document.getElementById('receiver');
-      iframeElem.contentWindow.postMessage({'actionType': 'ameliaSay', 'actionData': 'Hi there'}, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
-    }
+    var iframeElem = document.getElementById('receiver');
+    iframeElem.contentWindow.postMessage({
+      'actionType': 'ameliaSay',
+      'actionData': 'Hi there'
+    }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
   });
 
   function openChatOverlay (receiverElem, imgElemOpen, imgElemClose) {
