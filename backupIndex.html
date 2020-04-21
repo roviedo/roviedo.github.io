@@ -166,9 +166,9 @@
   document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
     console.log('changed and clicked', document.getElementById('chatOverlayInput').value);
     if (document.getElementById('chatOverlayInput').value !== '' && typeof document.getElementById('chatOverlayInput').value !== 'undefined') {
-      console.log('it is not undefined');
+      console.log('v5');
       var iframeElem = document.getElementById('receiver');
-      iframeElem.contentWindow.postMessage({'actionType': 'ameliaSay', 'actionData': 'Hi there'}, 'https://ameliav4.dev.amelia.com/Amelia/ui/greg/?domainCode=gateway_test');
+      iframeElem.contentWindow.postMessage({'actionType': 'ameliaSay', 'actionData': 'Hi there'}, 'https://ameliav4.dev.amelia.com/Amelia/ui/greg/');
     }
   });
 
