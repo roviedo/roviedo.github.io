@@ -7,7 +7,7 @@
 </head>
 <body>
 <div>
-  <div><span>Click to send greeting via post message</span></div>
+  <div class="chat-overlay-input-submit-header"><span>Click to send greeting via post message</span></div>
   <button id="chatOverlayInputSubmit" type="button">Send greeting to Chat Overlay</button>
 </div>
 <div class="chat-overlay chat-overlay-closed">
@@ -26,7 +26,6 @@
 </div>
 <style>
 .chat-overlay {
-  cursor: pointer;
   position: fixed;
   width: 376px;
   height: 500px;
@@ -35,11 +34,16 @@
   z-index: 90;
 }
 
+.chat-overlay-input-submit-header {
+  padding: 1rem;
+}
+
 #chatOverlayInputSubmit {
-    color: #FFF;
-    border-radius: 15px;
-    padding: 20px;
-    background-color: #000;
+  cursor: pointer;
+  color: #FFF;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background-color: #000;
 }
  
 .chat-overlay-open {
