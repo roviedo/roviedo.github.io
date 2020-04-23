@@ -316,8 +316,11 @@
     //     }
     
     // Conditional below added to support Safari third party cookie issue (original conditional above without)
-    var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
-    if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
+//     var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
+//     if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
+    
+    if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true") {
+//     if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
       console.log('im closing overlay');
       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
     } else {
