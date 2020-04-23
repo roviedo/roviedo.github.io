@@ -6,9 +6,19 @@
     <title>Index</title>
 </head>
 <body>
-<div>
+<div class="chat-overlay-input-submit-container">
   <div class="chat-overlay-input-submit-header"><span>Click to send greeting via post message</span></div>
   <button id="chatOverlayInputSubmit" type="button">Send greeting to Chat Overlay</button>
+</div>
+<div class="chat-overlay-choose-domain-header"><span>Select a conversation domain</span>
+<div class="select">
+  <select name="pets" id="pet-select">
+    <option value="">--Please choose a domain--</option>
+    <option value="global">Global</option>
+    <option value="gateway_test">Gateway Test</option>
+    <option value="anonymous">anonymous</option>
+    <option value="nonexistent-domain">Nonexistent-Domain</option>
+  </select>
 </div>
 <div class="chat-overlay chat-overlay-closed">
   <div class="chat-overlay-wrapper">
@@ -34,16 +44,20 @@
   z-index: 90;
 }
 
-.chat-overlay-input-submit-header {
+.chat-overlay-choose-domain-header, 
+.chat-overlay-input-submit-container {
   padding: 1rem;
 }
 
 #chatOverlayInputSubmit {
   cursor: pointer;
   color: #FFF;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  background-color: #000;
+  padding: 1rem;
+  width: 20em;
+  background: #2c3e50;
+  overflow: hidden;
+  border-radius: 0.50em;
+  margin: 0.5rem 0;
 }
  
 .chat-overlay-open {
@@ -115,6 +129,59 @@
 .absolute-cart-box {
   display: none;
 }
+
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #2c3e50;
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: #2c3e50;
+  overflow: hidden;
+  border-radius: .25em;
+  margin: 0.5rem 0;
+}
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #34495e;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
  
 @media only screen and (max-width: 768px) {
   .chat-overlay {
@@ -183,6 +250,10 @@
     }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
   });
 
+  document.getElementById('pet-select').addEventListener('change', function (e) {
+    document.getElementById('receiver').src = "https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=" + e.target.value;
+  });
+
   function openChatOverlay (receiverElem, imgElemOpen, imgElemClose) {
     document.getElementById('receiver').classList.add("open");
     document.getElementById('receiver').classList.remove("close");
@@ -243,36 +314,36 @@
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
    
-   /// Start of Safari 3rd party cookies workaround (Apple browsers doesn't allow third parties cookies to be set without user action), this only works for versions prior to Safari 13.1 desktop and iOS 13.4
-//    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
-//                navigator.userAgent &&
-//                navigator.userAgent.indexOf('CriOS') == -1 &&
-//                navigator.userAgent.indexOf('FxiOS') == -1;
+   /// Start of Safari 3rd party cookies workaround (Apple browsers doesn't allow third parties cookies to be set without user action)
+   var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent &&
+               navigator.userAgent.indexOf('CriOS') == -1 &&
+               navigator.userAgent.indexOf('FxiOS') == -1;
    
-//    var ua = window.navigator.userAgent;
-//    var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
-//    var webkit = !!ua.match(/WebKit/i);
-//    var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+   var ua = window.navigator.userAgent;
+   var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+   var webkit = !!ua.match(/WebKit/i);
+   var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
    
-//    if (isSafari || iOSSafari) {
-//       (function() {
-//         document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
-//           e.preventDefault();
+   if (isSafari || iOSSafari) {
+      (function() {
+        document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
+          e.preventDefault();
           
           
-//           var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
-//           if (!ameliaChatOverlayCookie) {
-//             var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=1,height=1");
-//             setTimeout(function() {
-//               wnd.close();
-// //               document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
-//               document.getElementById('receiver').src = "http://app01.dev.ameliav4.amelia.com:8080/Amelia/ui/raul/2/?embed=iframe&domainCode=Anonymous";
-//             }, 3000);
-//             setCookie('ameliaChatOverlay', true, 3);
-//           }
-//           return false;
-//         };
-//       })();
+          var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
+          if (!ameliaChatOverlayCookie) {
+            var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=1,height=1");
+            setTimeout(function() {
+              wnd.close();
+//               document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
+              document.getElementById('receiver').src = "http://app01.dev.ameliav4.amelia.com:8080/Amelia/ui/raul/2/?embed=iframe&domainCode=Anonymous";
+            }, 3000);
+            setCookie('ameliaChatOverlay', true, 3);
+          }
+          return false;
+        };
+      })();
 //        var windowObjectReference = null;
 //        document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
 //            e.preventDefault();
@@ -291,7 +362,7 @@
 //           }
 //          return false;
 //        }
-//      }
+     }
    
    /// END of Safari 3rd party cookies workaround
  
@@ -316,11 +387,8 @@
     //     }
     
     // Conditional below added to support Safari third party cookie issue (original conditional above without)
-//     var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
-//     if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
-    
-    if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true") {
-//     if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
+    var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
+    if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
       console.log('im closing overlay');
       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
     } else {
