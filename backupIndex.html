@@ -243,36 +243,36 @@
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
    
-   /// Start of Safari 3rd party cookies workaround (Apple browsers doesn't allow third parties cookies to be set without user action)
-   var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
-               navigator.userAgent &&
-               navigator.userAgent.indexOf('CriOS') == -1 &&
-               navigator.userAgent.indexOf('FxiOS') == -1;
+   /// Start of Safari 3rd party cookies workaround (Apple browsers doesn't allow third parties cookies to be set without user action), this only works for versions prior to Safari 13.1 desktop and iOS 13.4
+//    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+//                navigator.userAgent &&
+//                navigator.userAgent.indexOf('CriOS') == -1 &&
+//                navigator.userAgent.indexOf('FxiOS') == -1;
    
-   var ua = window.navigator.userAgent;
-   var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
-   var webkit = !!ua.match(/WebKit/i);
-   var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+//    var ua = window.navigator.userAgent;
+//    var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+//    var webkit = !!ua.match(/WebKit/i);
+//    var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
    
-   if (isSafari || iOSSafari) {
-      (function() {
-        document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
-          e.preventDefault();
+//    if (isSafari || iOSSafari) {
+//       (function() {
+//         document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
+//           e.preventDefault();
           
           
-          var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
-          if (!ameliaChatOverlayCookie) {
-            var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=1,height=1");
-            setTimeout(function() {
-              wnd.close();
-//               document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
-              document.getElementById('receiver').src = "http://app01.dev.ameliav4.amelia.com:8080/Amelia/ui/raul/2/?embed=iframe&domainCode=Anonymous";
-            }, 3000);
-            setCookie('ameliaChatOverlay', true, 3);
-          }
-          return false;
-        };
-      })();
+//           var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
+//           if (!ameliaChatOverlayCookie) {
+//             var wnd = window.open("https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous", "", "width=1,height=1");
+//             setTimeout(function() {
+//               wnd.close();
+// //               document.getElementById('receiver').src = "https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/releaseTesting/?embed=iframe&domainCode=Anonymous";
+//               document.getElementById('receiver').src = "http://app01.dev.ameliav4.amelia.com:8080/Amelia/ui/raul/2/?embed=iframe&domainCode=Anonymous";
+//             }, 3000);
+//             setCookie('ameliaChatOverlay', true, 3);
+//           }
+//           return false;
+//         };
+//       })();
 //        var windowObjectReference = null;
 //        document.getElementsByClassName("chat-overlay-header")[0].onclick = function (e) {
 //            e.preventDefault();
