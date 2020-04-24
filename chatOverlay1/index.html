@@ -10,16 +10,42 @@
   <div class="chat-overlay-input-submit-header"><span>Click to send greeting via post message</span></div>
   <button id="chatOverlayInputSubmit" type="button">Send greeting to Chat Overlay</button>
 </div>
-<div class="chat-overlay-choose-domain-header"><span>Select a conversation domain</span>
-<div class="select">
-  <select name="pets" id="pet-select">
-    <option value="">--Please choose a domain--</option>
-    <option value="global">Global</option>
-    <option value="gateway_test">Gateway Test</option>
-    <option value="anonymous">anonymous</option>
-    <option value="nonexistent-domain">Nonexistent-Domain</option>
-  </select>
+
+<div class="chat-overlay-choose-domain-select-container">
+  <div class="chat-overlay-choose-domain-header"><span>Select a conversation domain from select options</span></div>
+  <div class="select">
+    <select name="pets" id="pet-select">
+      <option value="">--Please choose a domain--</option>
+      <option value="global">Global</option>
+      <option value="gateway_test">Gateway Test</option>
+      <option value="anonymous">anonymous</option>
+      <option value="nonexistent-domain">Nonexistent-Domain</option>
+    </select>
+  </div>
 </div>
+
+<div class="chat-overlay-choose-domain-table-container">
+  <div><span>Select a conversation domain from list</span></div>
+  <div class="chat-overlay-table-domains-container">
+    <div class="chat-overlay-table-domain">
+      <input type="hidden" class="chat-overlay-table-domain" value="global" />
+      Global
+    </div>
+    <div class="chat-overlay-table-domain">
+      <input type="hidden" class="chat-overlay-table-domain" value="gateway_test" />
+      Gateway test
+    </div>
+    <div class="chat-overlay-table-domain">
+      <input type="hidden" class="chat-overlay-table-domain" value="anonymous" />
+      anonymous
+    </div>
+    <div class="chat-overlay-table-domain">
+      <input type="hidden" class="chat-overlay-table-domain" value="nonexistent-domain" />
+      Nonexistent-Domain
+    </div>
+  </div>
+</div>
+
 <div class="chat-overlay chat-overlay-closed">
   <div class="chat-overlay-wrapper">
     <div class="chat-overlay-header-mobile close">
@@ -35,6 +61,10 @@
   </div>
 </div>
 <style>
+body, button, select {
+  font: 400 14px system-ui;
+}
+
 .chat-overlay {
   position: fixed;
   width: 376px;
@@ -44,8 +74,10 @@
   z-index: 90;
 }
 
-.chat-overlay-choose-domain-header, 
-.chat-overlay-input-submit-container {
+.chat-overlay-choose-domains-container, 
+.chat-overlay-input-submit-container,
+.chat-overlay-choose-domain-table-container,
+.chat-overlay-choose-domain-select-container {
   padding: 1rem;
 }
 
@@ -140,7 +172,6 @@ select {
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  /*background: #2c3e50;*/
   background: #3a3a3a;
   background-image: none;
 }
@@ -184,6 +215,22 @@ select {
 .select:hover::after {
   color: #f39c12;
 }
+
+.chat-overlay-table-domains-container {
+  width: 20em;
+  line-height: 3;
+  margin: 0.5rem 0;
+}
+
+.chat-overlay-table-domain {
+  background: #3a3a3a;
+  border-radius: .25em;
+  margin: 0.5rem 0;
+  color: #FFF;
+  padding: 0 .5em;
+  height: 3em;
+  cursor: pointer;
+} 
  
 @media only screen and (max-width: 768px) {
   .chat-overlay {
@@ -251,6 +298,18 @@ select {
       'actionData': 'Hi there'
     }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
   });
+
+  var chatOverlayTableDomain = document.getElementsByClassName('chat-overlay-table-domain');
+  for (var i = 0; i < chatOverlayTableDomain.length; i++) {
+    chatOverlayTableDomain[i].addEventListener('click', function (e) {
+      if (typeof e.target !== 'undefined') {
+        var elem = e.target;
+        if (typeof elem.getElementsByTagName('input')[0].value !== 'undefined') {
+          document.getElementById('receiver').src = "https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=" + elem.getElementsByTagName('input')[0].value;
+        }
+      }
+    });
+  }
 
   document.getElementById('pet-select').addEventListener('change', function (e) {
     document.getElementById('receiver').src = "https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=" + e.target.value;
