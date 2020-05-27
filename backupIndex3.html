@@ -1,0 +1,125 @@
+amelia = {
+  init(){
+    console.log('Amelia: init');
+    amelia.timer=setTimeout(function(){amelia.autoOpen()},4000);
+    window.addEventListener('load',function(){
+      document.getElementById('amelia-button').addEventListener('click',amelia.toggle);
+      //document.getElementById('amelia').addEventListener('transitionend',amelia.isclosed);
+      document.getElementById('amelia-content').addEventListener('load',amelia.isloaded);
+      window.addEventListener('message', (e) => {
+          if(e.origin != 'https://onelaw.dev.amelia.com') return;
+          for(let k of Object.keys(e.data)) console.log(`${k}: ${e.data[k]}`);
+          document.getElementById('amelia-content').contentWindow.postMessage({actionType: 'ameliaBpn', actionName: 'phase-one'}, 'https://onelaw.dev.amelia.com/Amelia/ui/AmeliaCust/');
+      });
+    });
+    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent &&
+               navigator.userAgent.indexOf('CriOS') == -1 &&
+               navigator.userAgent.indexOf('FxiOS') == -1;
+        var ua = window.navigator.userAgent;
+       var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+       var webkit = !!ua.match(/WebKit/i);
+       var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return false;
+      }
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+       if (isSafari || iOSSafari) {
+          (function() {
+            document.getElementById("amelia-button").onclick = function (e) {
+              e.preventDefault();
+              var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
+              if (!ameliaChatOverlayCookie) {
+              var wnd = window.open("https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=gateway_test&embed=iframe&bpn_Connect=none", "", "width=1,height=1");
+            // var wnd = window.open("https://ameliadev.attorneykennugent.com/Amelia/ui/AmeliaCust/?embed=iframe&domainCode=onlawdev", "", "width=1,height=1");
+                setTimeout(function() {
+                  wnd.close();
+                  document.getElementById('amelia-content').src = "https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=gateway_test&embed=iframe&bpn_Connect=none";
+                  //document.getElementById('amelia-content').src = "https://ameliadev.attorneykennugent.com/Amelia/ui/AmeliaCust/?embed=iframe&domainCode=onlawdev";
+                }, 3000);
+                setCookie('ameliaChatOverlay', true, 3);
+              }
+              return false;
+            };
+          })();
+       }
+  },
+  open(){
+    console.log('Amelia: open');
+    if(amelia.timer){
+      clearTimeout(amelia.timer);
+      amelia.timer=0;
+    }
+    //document.getElementById('amelia-content').src="https://onelaw.dev.amelia.com/Amelia/ui/AmeliaCust/?embed=iframe&domainCode=onlawdev&bpn_processName=phase-one";
+    document.getElementById('amelia-content').src="https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=gateway_test&embed=iframe&bpn_Connect=none";
+    //document.getElementById('amelia-content').src="https://ameliadev.attorneykennugent.com/Amelia/ui/AmeliaCust/?embed=iframe&domainCode=onlawdev&bpn_processName=testMessages";
+  },
+  close(){
+    console.log('Amelia: close');
+    if(amelia.timer){
+      clearTimeout(amelia.timer);
+      amelia.timer=0;
+    }
+    document.getElementById('amelia').classList.add('closed');
+  },
+  isclosed(){
+    console.log('Amelia: transition end');
+    if(document.getElementById('amelia').classList.contains('closed') && document.getElementById('amelia-content').src){
+      console.log('Amelia: isclosed src:'+document.getElementById('amelia-content').src);
+      document.getElementById('amelia-content').src="";
+    }
+  },
+  isloaded(){
+    console.log('Amelia: isLoaded');
+    if(document.getElementById('amelia-content').src){
+      document.getElementById('amelia').classList.remove('closed');
+    }
+  },
+  toggle(){
+      if (document.getElementById('amelia-content').src === 'https://roviedo.github.io') {
+          amelia.open();
+      }
+    console.log('Amelia: toggle');
+    if(amelia.timer){
+      clearTimeout(amelia.timer);
+      amelia.timer=0;
+    }
+    document.getElementById('amelia').classList.toggle('closed');
+  },
+  autoOpen(){
+    console.log('Amelia: autoopen');
+    if(!amelia.timer) return;
+    amelia.open();
+    //amelia.timer=setTimeout(function(){amelia.autoClose()},5000);
+  },
+  autoClose(){
+    console.log('Amelia: autoclose');
+    if(!amelia.timer) return;
+    amelia.close();
+  },
+  hasFocus(){
+    console.log('Amelia: hasFocus');
+    if(amelia.timer){
+      clearTimeout(amelia.timer);
+      amelia.timer=0;
+    }
+  }
+}
+amelia.init();
