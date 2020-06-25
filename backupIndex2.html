@@ -187,26 +187,18 @@
 }
 </style>
  <script>
-   function sendMessage() {
-        /**
-         * Use data object and postMessage to URL provided (postMessage to child frame)
-         * @param {Object} data - data to be sent to url provided of child frame
-         * @returns - no return
-         */
-         console.log('clicked')
-         console.log('receiver', document.getElementById('receiver'));
-        var receiverElemContentWindow= document.getElementById('receiver').contentWindow;
-        console.log(receiverElemContentWindow)
-        receiverElemContentWindow.postMessage({actionType: 'endConversation', actionData: true}, 'https://bd360.prod.amelia.com/Amelia/ui/CustomerCareOverlay/13/');
-      }
-   document.getElementById('close-convo').addEventListener('click', sendMessage);
-   
-   
-  document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
-    var iframeElem = document.getElementById('receiver');
+   var iframeElem = document.getElementById('receiver');
+   document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
     iframeElem.contentWindow.postMessage({
       'actionType': 'ameliaSay',
       'actionData': 'Hi there'
+    }, 'https://bd360.prod.amelia.com/Amelia/ui/CustomerCareOverlay/13/');
+  });
+   
+   document.getElementById('close-convo').addEventListener('click', function () {
+    iframeElem.contentWindow.postMessage({
+      'actionType': 'endConversation',
+      'actionData': true
     }, 'https://bd360.prod.amelia.com/Amelia/ui/CustomerCareOverlay/13/');
   });
 
