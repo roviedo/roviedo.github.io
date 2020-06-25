@@ -194,6 +194,7 @@
          * @returns - no return
          */
          console.log('clicked')
+         console.log('receiver', document.getElementById('receiver'));
         var receiverElemContentWindow= document.getElementById('receiver').contentWindow;
         console.log(receiverElemContentWindow)
         receiverElemContentWindow.postMessage({actionType: 'endConversation', actionData: true}, 'https://bd360.prod.amelia.com/Amelia/ui/CustomerCareOverlay/13/');
