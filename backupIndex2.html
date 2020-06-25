@@ -10,6 +10,9 @@
   <div class="chat-overlay-input-submit-header"><span>Click to send greeting via post message</span></div>
   <button id="chatOverlayInputSubmit" type="button">Send greeting to Chat Overlay</button>
 </div>
+  <div>
+      <button id="close-convo">Close Conversation</button>
+  </div>
 <div class="chat-overlay chat-overlay-closed">
   <div class="chat-overlay-wrapper">
     <div class="chat-overlay-header-mobile close">
@@ -184,6 +187,20 @@
 }
 </style>
  <script>
+   function sendMessage() {
+        /**
+         * Use data object and postMessage to URL provided (postMessage to child frame)
+         * @param {Object} data - data to be sent to url provided of child frame
+         * @returns - no return
+         */
+         console.log('clicked')
+        var receiverElemContentWindow= document.getElementById('receiver').contentWindow;
+        console.log(receiverElemContentWindow)
+        receiverElemContentWindow.postMessage({actionType: 'endConversation', actionData: true}, 'https://bd360.prod.amelia.com/Amelia/ui/CustomerCareOverlay/10/');
+      }
+   document.getElementById('close-convo').addEventListener('click', sendMessage);
+   
+   
   document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
     var iframeElem = document.getElementById('receiver');
     iframeElem.contentWindow.postMessage({
