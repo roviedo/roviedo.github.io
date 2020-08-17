@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Honeywell Sans Web_Medium';
-    src:    url(https://honeywellprod.sharepoint.com/:u:/r/sites/DWP-Staging/AmeliiaBotUI/webfonts/HoneywellSansWeb-Medium.woff2) format('woff2');
+    src:    url(https://roviedo.github.com/fonts/HoneywellSansWeb-Medium.woff2) format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Honeywell Sans Web_Medium Italic';
-    src:   url(https://honeywellprod.sharepoint.com/:u:/r/sites/DWP-Staging/AmeliiaBotUI/webfonts/HoneywellSansWeb-MediumItalic.woff2) format('woff2');
+    src:   url(https://roviedo.github.com/fonts/HoneywellSansWeb-MediumItalic.woff2) format('woff2');
     font-weight: normal;
     font-style: normal;
 }
