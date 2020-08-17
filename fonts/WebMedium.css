@@ -1,12 +1,12 @@
 @font-face {
-    font-family: 'Honeywell Sans Web_Medium';
+    font-family: 'HoneywellSansWeb_Medium';
     src:    url(https://roviedo.github.com/fonts/HoneywellSansWeb-Medium.woff2) format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Honeywell Sans Web_Medium Italic';
+    font-family: 'HoneywellSansWeb_MediumItalic';
     src:   url(https://roviedo.github.com/fonts/HoneywellSansWeb-MediumItalic.woff2) format('woff2');
     font-weight: normal;
     font-style: normal;
