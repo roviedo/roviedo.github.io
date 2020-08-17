@@ -1,0 +1,14 @@
+
+@font-face {
+    font-family: 'Honeywell Sans Web_Book';
+    src:     url(https://honeywellprod.sharepoint.com/:u:/r/sites/DWP-Staging/AmeliiaBotUI/webfonts/HoneywellSansWeb-Book.woff2) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Honeywell Sans Web_Book Italic';
+    src:    url(https://honeywellprod.sharepoint.com/:u:/r/sites/DWP-Staging/AmeliiaBotUI/webfonts/HoneywellSansWeb-BookItalic.woff2) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
