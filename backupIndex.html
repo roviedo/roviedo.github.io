@@ -427,8 +427,9 @@
   
    
    document.querySelector('iframe#receiver').onload = function(){
-      console.log('iframe loaded');
-  };
+    var iframeBody = this.contentDocument.body;
+    console.log('iframe loaded, body is: ', body);
+};
 </script>
 </body>
 </html>
