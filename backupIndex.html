@@ -424,7 +424,11 @@
         el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
       }
    /// END of Chat Overlay drag and drop
- 
+  
+   
+   document.querySelector('iframe#receiver').onload = function(){
+      console.log('iframe loaded');
+  };
 </script>
 </body>
 </html>
