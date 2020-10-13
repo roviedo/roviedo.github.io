@@ -196,8 +196,12 @@
     iframeElem.contentWindow.postMessage({
       'actionType': 'ameliaBpn',
       'actionName': 'multi-select',
-      'actionData': 'Hi there',
-      'actionMessage': ' '
+      'actionData': {
+        'message': 'Test',
+        'submission': { 
+          'shouldEcho': false
+        }
+      }
     }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
   });
 
