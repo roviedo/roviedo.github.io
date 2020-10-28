@@ -447,6 +447,14 @@
      console.log('frame content', this.contentWindow);
 //     console.log('iframe loaded, body is: ', body);
 };
+   
+window.addEventListener("message", (event) => {
+  console.log('im in beginning of event');
+  if (event.origin !== "https://ameliav4.dev.amelia.com/")
+    return;
+
+  console.log('event', event);
+}, false);
 </script>
 </body>
 </html>
