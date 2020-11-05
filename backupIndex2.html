@@ -192,14 +192,14 @@
     iframeElem.contentWindow.postMessage({
       'actionType': 'ameliaSay',
       'actionData': 'Hi there'
-    }, 'https://bd360.prod.amelia.com/Amelia/ui/CustomerCareOverlay/13/');
+    }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
   });
    
    var endConversation = function () {
      iframeElem.contentWindow.postMessage({
       'actionType': 'endConversation',
       'actionData': true
-    }, 'https://bd360.prod.amelia.com/Amelia/ui/CustomerCareOverlay/13/');
+    }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
    };
    
    document.getElementById('close-convo').addEventListener('click', function () {
