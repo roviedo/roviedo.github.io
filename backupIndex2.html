@@ -14,10 +14,10 @@
       <button id="close-convo">Close Conversation</button>
   </div>
 <div class="chat-overlay chat-overlay-closed">
+  <div class="header-logo">
+     <img class="logo" src="/ncr_logo.png" alt="logo" />
+  </div>
   <div class="chat-overlay-wrapper">
-    <div class="header-logo">
-      <img class="logo" src="/ncr_logo.png" alt="logo" />
-    </div>
     <div class="chat-overlay-header-mobile close">
       <img class="close" src="/close.png" alt="toggle chat overlay" />
     </div>
@@ -43,10 +43,15 @@
 .chat-overlay {
   position: fixed;
   width: 376px;
-  height: 500px;
+  height: 530px;
   bottom: 24px;
   right: 24px;
   z-index: 90;
+}
+  
+.header-logo {
+  height: 30px;
+  background: #31ba4b;
 }
 
 .chat-overlay-input-submit-header {
