@@ -10,18 +10,28 @@
   <div class="chat-overlay-input-submit-header"><span>Click to send greeting via post message</span></div>
   <button id="chatOverlayInputSubmit" type="button">Send greeting to Chat Overlay</button>
 </div>
+  <div>
+      <button id="close-convo">Close Conversation</button>
+  </div>
 <div class="chat-overlay chat-overlay-closed">
+  <div class="header-logo">
+     <img class="logo" src="/ncr_logo.png" alt="logo" />
+  </div>
   <div class="chat-overlay-wrapper">
     <div class="chat-overlay-header-mobile close">
+      <img class="logo" src="/ncr_logo.png" alt="logo" />
       <img class="close" src="/close.png" alt="toggle chat overlay" />
     </div>
-    <iframe id="receiver" class="close" src="https://aveannamob.amelia.com/Amelia/chat" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
-      <p>Your browser does not support iframes.</p>
-    </iframe>
-<!--     <iframe id="receiver" class="close" src="https://aveanna.dev.amelia.com/Amelia/chat" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
+<!--     <iframe id="receiver" class="close" src="https://bd360.prod.amelia.com/Amelia/ui/CustomerCareOverlay/13/?embed=iframe&domainCode=customercare" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
       <p>Your browser does not support iframes.</p>
     </iframe> -->
-<!--     <iframe id="receiver" class="close" src="https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=gateway_test&embed=iframe&bpn_Connect=none" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
+    <iframe id="receiver" class="close" src="https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=gateway_test&embed=iframe" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
+      <p>Your browser does not support iframes.</p>
+    </iframe>
+    <!-- <iframe id="receiver" class="close" src="https://sharecare.amelia.com/Amelia/ui/AmeliaCust/?domainCode=covidscreener" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
+      <p>Your browser does not support iframes.</p>
+    </iframe> -->
+<!--     <iframe id="receiver" class="close" src="https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/raul/?domainCode=Anonymous&embed=iframe" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
       <p>Your browser does not support iframes.</p>
     </iframe> -->
     <div class="chat-overlay-header">
@@ -34,10 +44,24 @@
 .chat-overlay {
   position: fixed;
   width: 376px;
-  height: 500px;
+  height: 535px;
   bottom: 24px;
   right: 24px;
   z-index: 90;
+}
+  
+.chat-overlay-closed .header-logo {
+  display: none;
+}
+  
+.header-logo {
+  height: 30px;
+  background: #31ba4b;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+  
+.header-logo img {
+  height: inherit; 
 }
 
 .chat-overlay-input-submit-header {
@@ -53,11 +77,11 @@
 }
  
 .chat-overlay-open {
-    height: 512px;
+    height: 535px;
 }
  
 .chat-overlay-closed {
-    height: 78px;
+    height: 71px;
  
 }
  
@@ -86,7 +110,7 @@
   opacity: 1;
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.5);
-  border-radius: 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
  
 #receiver.close {
@@ -128,18 +152,31 @@
     position: fixed;
     height: 100%;
   }
+  
+  .header-logo {
+    display: none;
+  }
  
   .chat-overlay-header-mobile {
     display: flex;
     width: inherit;
     height: 9%;
-    background: #4d5aff;
+    background: #31ba4b;
   }
  
   .chat-overlay-header-mobile img {
     height: 30%;
     padding: 1rem;
+    align-self: center;
+  }
+  
+  .chat-overlay-header-mobile img:last-of-type {
     margin-left: auto;
+  }
+  
+  .chat-overlay-header-mobile img.logo {
+    height: 80%;
+    padding: 1rem;
   }
  
   .chat-overlay-header-mobile.close {
@@ -181,14 +218,30 @@
 }
 </style>
  <script>
-  document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
-    var iframeElem = document.getElementById('receiver');
+   var iframeElem = document.getElementById('receiver');
+   document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
     iframeElem.contentWindow.postMessage({
       'actionType': 'ameliaSay',
       'actionData': 'Hi there'
-    }, 'https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/raul/');
+    }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
   });
-
+   
+   var endConversation = function () {
+     iframeElem.contentWindow.postMessage({
+      'actionType': 'endConversation',
+      'actionData': true
+    }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
+   };
+   
+   document.getElementById('close-convo').addEventListener('click', function () {
+    endConversation();
+  });
+   
+   window.onbeforeunload = function () {
+     endConversation();
+     // return null; // No prompt
+     return ''; // Yes with prompt
+   }
   // https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/raul/
   // https://ameliav4.dev.amelia.com/Amelia/ui/raul/
    
