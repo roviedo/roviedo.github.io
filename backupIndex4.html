@@ -178,7 +178,7 @@
  
 @media only screen and (max-width: 768px) {
   .chat-overlay {
-    width: 100%;
+    width: 88%;
     position: fixed;
     height: 100%;
   }
@@ -275,15 +275,15 @@
   // https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/raul/
   // https://ameliav4.dev.amelia.com/Amelia/ui/raul/
    
-  var init = false;
+  var isInit = false;
   function init () {
     console.log('i should be in here once');
     document.getElementById('receiver').src = 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=gateway_test&embed=iframe';
-    init = true;
+    isInit = true;
   }
    
   function openChatOverlay (receiverElem, imgElemOpen, imgElemClose) {
-    if (!init) {
+    if (!isInit) {
       init();
     }
     document.getElementById('receiver').classList.add("open");
