@@ -27,12 +27,15 @@
       <img class="logo" src="/ncr_logo.png" alt="logo" />
       <img class="close" src="/close.png" alt="toggle chat overlay" />
     </div>
+    <iframe id="receiver" class="close" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
+      <p>Your browser does not support iframes.</p>
+    </iframe>
 <!--     <iframe id="receiver" class="close" src="https://bd360.prod.amelia.com/Amelia/ui/CustomerCareOverlay/13/?embed=iframe&domainCode=customercare" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
       <p>Your browser does not support iframes.</p>
     </iframe> -->
-    <iframe id="receiver" class="close" src="https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=gateway_test&embed=iframe" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
+<!--     <iframe id="receiver" class="close" src="https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=gateway_test&embed=iframe" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
       <p>Your browser does not support iframes.</p>
-    </iframe>
+    </iframe> -->
     <!-- <iframe id="receiver" class="close" src="https://sharecare.amelia.com/Amelia/ui/AmeliaCust/?domainCode=covidscreener" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
       <p>Your browser does not support iframes.</p>
     </iframe> -->
@@ -272,7 +275,16 @@
   // https://ipsoft-amelia-uiux-v3.ipsoft.com/Amelia/ui/raul/
   // https://ameliav4.dev.amelia.com/Amelia/ui/raul/
    
+  var init = false;
+  function init () {
+    document.getElementById('receiver').src = 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/?domainCode=gateway_test&embed=iframe';
+    init = true;
+  }
+   
   function openChatOverlay (receiverElem, imgElemOpen, imgElemClose) {
+    if (!init) {
+      init();
+    }
     document.getElementById('receiver').classList.add("open");
     document.getElementById('receiver').classList.remove("close");
     document.getElementsByClassName('chat-overlay')[0].classList.add("chat-overlay-open");
