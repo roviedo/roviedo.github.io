@@ -252,6 +252,12 @@
 }
 </style>
  <script>
+   function receiveMessage (e) {
+       console.log('this is the event e', e.data);
+   }
+   
+   window.addEventListener('message', receiveMessage);
+   
    var iframeElem = document.getElementById('receiver');
    document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
     iframeElem.contentWindow.postMessage({
