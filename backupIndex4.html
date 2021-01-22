@@ -13,6 +13,9 @@
   <div>
       <button id="close-convo">Close Conversation</button>
   </div>
+  <div>
+      <button id="reset-convo">Reset Conversation</button>
+  </div>
 <div class="chat-overlay chat-overlay-closed">
    <div class="chat-overlay-banner">
       <div class="chat-overlay-banner-title">Amelia</div>
@@ -273,8 +276,19 @@
     }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
    };
    
+   var resetConversation = function () {
+     iframeElem.contentWindow.postMessage({
+      'actionType': 'resetConversation',
+      'actionData': true
+    }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
+   };
+   
    document.getElementById('close-convo').addEventListener('click', function () {
     endConversation();
+  });
+   
+   document.getElementById('reset-convo').addEventListener('click', function () {
+    resetConversation();
   });
    
    window.onbeforeunload = function () {
