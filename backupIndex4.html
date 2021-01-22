@@ -276,20 +276,20 @@
     }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
    };
    
-   var resetConversation = function () {
-     iframeElem.contentWindow.postMessage({
-      'actionType': 'resetConversation',
-      'actionData': true
-    }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
-   };
+//    var resetConversation = function () {
+//      iframeElem.contentWindow.postMessage({
+//       'actionType': 'resetConversation',
+//       'actionData': true
+//     }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
+//    };
    
    document.getElementById('close-convo').addEventListener('click', function () {
     endConversation();
   });
    
-   document.getElementById('reset-convo').addEventListener('click', function () {
-    resetConversation();
-  });
+//    document.getElementById('reset-convo').addEventListener('click', function () {
+//     resetConversation();
+//   });
    
    window.onbeforeunload = function () {
      endConversation();
