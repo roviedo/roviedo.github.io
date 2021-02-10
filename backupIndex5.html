@@ -495,8 +495,8 @@
     function initDrag(e) {
        startX = e.clientX;
        startY = e.clientY;
-       startWidth = parseInt(document.defaultView.getComputedStyle(p).width, 10);
-       startHeight = parseInt(document.defaultView.getComputedStyle(p).height, 10);
+       startWidth = parseInt(document.defaultView.getComputedStyle(dragItem).width, 10);
+       startHeight = parseInt(document.defaultView.getComputedStyle(dragItem).height, 10);
        dragItem.addEventListener('mousemove', doDrag, false);
        dragItem.addEventListener('mouseup', stopDrag, false);
     }
