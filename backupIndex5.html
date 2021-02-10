@@ -475,18 +475,15 @@
    
   
    /// Resize overlay
-   // var p = document.querySelector('p');
-   var dragItem = document.querySelector(".chat-overlay");
-   // var touchItem = document.querySelector(".chat-overlay-header-img.open");
-   // var chatOverlayWrapper = document.querySelector('.chat-overlay-wrapper');
-   // var container = document.querySelector("body");
+   var p = document.querySelector('p');
+   var p = document.querySelector('.chat-overlay-wrapper');
 
-    dragItem.addEventListener('click', function init() {
-        dragItem.removeEventListener('click', init, false);
-        dragItem.className = dragItem.className + ' resizable';
+    p.addEventListener('click', function init() {
+        p.removeEventListener('click', init, false);
+        p.className = p.className + ' resizable';
         var resizer = document.createElement('div');
         resizer.className = 'resizer';
-        dragItem.appendChild(resizer);
+        p.appendChild(resizer);
         resizer.addEventListener('mousedown', initDrag, false);
     }, false);
 
@@ -495,20 +492,21 @@
     function initDrag(e) {
        startX = e.clientX;
        startY = e.clientY;
-       startWidth = parseInt(document.defaultView.getComputedStyle(dragItem).width, 10);
-       startHeight = parseInt(document.defaultView.getComputedStyle(dragItem).height, 10);
-       dragItem.addEventListener('mousemove', doDrag, false);
-       dragItem.addEventListener('mouseup', stopDrag, false);
+       console.log('document.defaultView', document.defaultView);
+       startWidth = parseInt(document.defaultView.getComputedStyle(p).width, 10);
+       startHeight = parseInt(document.defaultView.getComputedStyle(p).height, 10);
+       console.log('documentElement', document.documentElement);
+       document.documentElement.addEventListener('mousemove', doDrag, false);
+       document.documentElement.addEventListener('mouseup', stopDrag, false);
     }
 
     function doDrag(e) {
-       dragItem.style.width = (startWidth + e.clientX - startX) + 'px';
-       dragItem.style.height = (startHeight + e.clientY - startY) + 'px';
+       p.style.width = (startWidth + e.clientX - startX) + 'px';
+       p.style.height = (startHeight + e.clientY - startY) + 'px';
     }
 
     function stopDrag(e) {
-        dragItem.removeEventListener('mousemove', doDrag, false);
-        dragItem.removeEventListener('mouseup', stopDrag, false);
+        document.documentElement.removeEventListener('mousemove', doDrag, false);    document.documentElement.removeEventListener('mouseup', stopDrag, false);
     }
    /// End of resize overlay
  
