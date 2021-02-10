@@ -473,7 +473,7 @@
 
     dragItem.addEventListener('click', function init() {
         dragItem.removeEventListener('click', init, false);
-        dragItem.className = p.className + ' resizable';
+        dragItem.className = dragItem.className + ' resizable';
         var resizer = document.createElement('div');
         resizer.className = 'resizer';
         dragItem.appendChild(resizer);
