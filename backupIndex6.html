@@ -10,6 +10,7 @@
   <div class="chat-overlay-input-submit-header"><span>Click to send greeting via post message</span></div>
   <button id="chatOverlayInputSubmit" type="button">Send greeting to Chat Overlay</button>
   <button id="chatOverlayInputSubmit2" type="button">Trigger process in Chat Overlay</button>
+  <button id="chatOverlayFocus" type="button">Amelia Focus</button>
 </div>
 <div class="chat-overlay chat-overlay-closed">
   <div class="chat-overlay-wrapper">
@@ -137,6 +138,10 @@
       }
      return false;
    }
+   
+   document.getElementById('chatOverlayFocus').addEventListener('click', function () {
+      windowObjectReference.focus();
+   });
    
    document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
     windowObjectReference.postMessage({
