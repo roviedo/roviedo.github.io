@@ -139,16 +139,14 @@
    }
    
    document.getElementById('chatOverlayInputSubmit').addEventListener('click', function () {
-    var iframeElem = document.getElementById('receiver');
-    iframeElem.contentWindow.postMessage({
+    windowObjectReference.postMessage({
       'actionType': 'ameliaSay',
-      'actionData': 'Hi there'
+      'actionData': 'Hi therdfdsafasdfe'
     }, 'https://ameliav4.dev.amelia.com/Amelia/ui/raul/');
   });
    
    document.getElementById('chatOverlayInputSubmit2').addEventListener('click', function () {
-    var iframeElem = document.getElementById('receiver');
-    iframeElem.contentWindow.postMessage({
+     windowObjectReference.postMessage({
       'actionType': 'ameliaBpn',
       'actionName': 'multi-select',
       'actionData': {
