@@ -391,11 +391,24 @@
 //     var ameliaChatOverlayCookie = getCookie('ameliaChatOverlay');
 //     if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
     
-    if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true") {
+//     if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true") {
+// //     if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
+//       console.log('im closing overlay');
+//       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+//     } else {
+//       console.log('im opening overlay');
+//       openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
+//     }
+//   } else {
+//       // Sorry! No Web Storage support..
+//     console.log('No localStorage support')
+//   }
+   
+     if (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true") {
 //     if (((isSafari || iOSSafari) && !ameliaChatOverlayCookie) || (chatOverlayOpen && localStorage.getItem('chatOverlayOpen') !== "true" || (chatOverlayOpen === null && chatOverlayDefaultStateClosed))) {
       console.log('im closing overlay');
       closeChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
-    } else {
+    } else if (localStorage.getItem('chatOverlayOpen') !== "false") {
       console.log('im opening overlay');
       openChatOverlay(receiverElem, chatOverlayHeaderImgElemOpen, chatOverlayHeaderImgElemClose);
     }
@@ -403,7 +416,7 @@
       // Sorry! No Web Storage support..
     console.log('No localStorage support')
   }
-   
+    
    //START of Chat Overlay drag and drop
       var dragItem = document.querySelector(".chat-overlay");
       var touchItem = document.querySelector(".chat-overlay-header-img.open");
