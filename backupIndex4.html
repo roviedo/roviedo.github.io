@@ -443,6 +443,8 @@
   chatOverlayHeaderElem.addEventListener('click', toggleChatOverlay);
   var chatOverlayHeaderElemMobile = document.getElementsByClassName('chat-overlay-header-mobile')[0];
   chatOverlayHeaderElemMobile.addEventListener('click', toggleChatOverlay);
+  var chatOverlayHeaderLogoClose = document.querySelector('.header-logo img.close');
+  chatOverlayHeaderLogoClose.addEventListener('click', closeChatOverlay);
  
  
   if (typeof(Storage) !== "undefined") {
