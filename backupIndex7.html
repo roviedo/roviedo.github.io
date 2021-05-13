@@ -29,7 +29,11 @@ Same and next-day PCR tests are available at all our <a href="https://wellnow.co
   <div class="chat-overlay-wrapper">
     <div class="chat-overlay-header-mobile chat-overlay-close">
       <img class="logo" src="https://wellnow.19ideas.com/app/themes/wellnow-theme/dist/images/wellnow-logo_19db557d.png" alt="logo" />
-      <img class="chat-overlay-close" src="/close.png" alt="toggle chat overlay" />
+      <!-- <img class="chat-overlay-close" src="/close.png" alt="toggle chat overlay" /> -->
+      <svg class="chat-overlay-close" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <line x1="4" y1="4" x2="20" y2="20" stroke="#003592" stroke-width="3"></line>
+        <line x1="20" y1="4" x2="4" y2="20" stroke="#003592" stroke-width="3"></line>
+      </svg>
     </div>
     <iframe id="receiver" class="chat-overlay-close" frameborder="0" width="100%" height="100%" allow="geolocation; microphone; camera">
       <p>Your browser does not support iframes.</p>
@@ -260,8 +264,8 @@ Same and next-day PCR tests are available at all our <a href="https://wellnow.co
     document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-closed");
     document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.remove('chat-overlay-close');
     document.getElementsByClassName('chat-overlay-banner')[0].classList.add('chat-overlay-close');
-    imgElemClose.style.opacity = 1;
-    imgElemOpen.style.opacity = 0;
+    if (imgElemClose) imgElemClose.style.opacity = 1;
+    if (imgElemOpen) imgElemOpen.style.opacity = 0;
     localStorage.setItem('chatOverlayOpen', true);
   }
  
@@ -272,8 +276,8 @@ Same and next-day PCR tests are available at all our <a href="https://wellnow.co
     document.getElementsByClassName('chat-overlay')[0].classList.remove("chat-overlay-open");
     document.getElementsByClassName('chat-overlay-header-mobile')[0].classList.add('chat-overlay-close');
     document.getElementsByClassName('chat-overlay-banner')[0].classList.remove('chat-overlay-close');
-    imgElemOpen.style.opacity = 1;
-    imgElemClose.style.opacity = 0;
+    if (imgElemOpen) imgElemOpen.style.opacity = 1;
+    if (imgElemClose) imgElemClose.style.opacity = 0;
     localStorage.setItem('chatOverlayOpen', false);
   }
  
