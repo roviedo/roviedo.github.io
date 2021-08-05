@@ -5,32 +5,170 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
     <link rel="icon" type="image/x-icon" />
-  <link href="css/0.app.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.css" rel="stylesheet"><link href="css/app.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.css" rel="stylesheet"></head>
+    <link href="css/0.app.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.css" rel="stylesheet">
+    <link href="css/app.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.css" rel="stylesheet">
+  </head>
   <body>
-    <div id="customer-ui-root"></div>
-    <button style="position: fixed; z-index: -999; top: -200px; left: -200px; opacity: 0; visibility: hidden;" id="micme" aria-hidden="true"></button>
-    <div style="position: fixed; z-index: -999; top: -200px; left: -200px; opacity: 0;" id="fileUpload" aria-hidden="true"></div>
-    <div class="loading-graphic">
-      <img src="assets/loading.png" alt="" />
+    <div class="chat-overlay">
+      <div id="customer-ui-root"></div>
+      <button style="position: fixed; z-index: -999; top: -200px; left: -200px; opacity: 0; visibility: hidden;" id="micme" aria-hidden="true"></button>
+      <div style="position: fixed; z-index: -999; top: -200px; left: -200px; opacity: 0;" id="fileUpload" aria-hidden="true"></div>
+      <div class="loading-graphic">
+        <img src="assets/loading.png" alt="" />
+      </div>
+      <script type="text/javascript" src="js/vendors.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.js"></script>
+      <script type="text/javascript" src="js/vendor.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.js"></script>
+      <script type="text/javascript" src="js/main.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.js"></script>
     </div>
+    <style>
+.chat-overlay {
+  position: fixed;
+  width: 376px;
+  height: 500px;
+  bottom: 24px;
+  right: 24px;
+  z-index: 90;
+}
 
-    <script>
-      /*
-        Display message on top of window if browser is not supported using library from browser-update.org
-        Minimum versions:
-        Edge - 42, IE - 11, FF - 57, Opera - Latest, Safari - 10, Chrome 61
-      */
-      var $buoop = {required:{e:17,i:11,f:57,o:0,s:10,c:61},insecure:true,api:2018.08 };
-      function $buo_f () {
-        var e = document.createElement("script");
-        e.src = "js/browser-detection.min.js";
-        document.body.appendChild(e);
-      };
-      try {
-        document.addEventListener("DOMContentLoaded", $buo_f,false);
-      } catch(e) {
-        window.attachEvent("onload", $buo_f);
-      }
-    </script>
-  <script type="text/javascript" src="js/vendors.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.js"></script><script type="text/javascript" src="js/vendor.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.js"></script><script type="text/javascript" src="js/main.5.19.20-SNAPSHOT-2021080501.44c6fbb11573d150eff6.js"></script></body>
+.chat-overlay-input-submit-header {
+  padding: 1rem;
+}
+
+#chatOverlayInputSubmit {
+  cursor: pointer;
+  color: #FFF;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background-color: #000;
+}
+ 
+.chat-overlay-open {
+    height: 512px;
+}
+ 
+.chat-overlay-closed {
+    height: 78px;
+ 
+}
+ 
+.chat-overlay-wrapper {
+  width: 376px;
+  height: 448px;
+}
+ 
+.chat-overlay-header-mobile {
+    display: none;
+}
+ 
+.chat-overlay-header {
+  position: relative;
+  height: 56px;
+  width: 56px;
+  border: 1px solid black;
+  background: #000;
+  margin-left: auto;
+  border-radius: 50%;
+  box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.5);
+}
+ 
+#receiver {
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+}
+ 
+#receiver.close {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+ 
+#receiver.open {
+  height: 100%;
+  opacity: 1;
+  overflow: hidden;
+}
+ 
+.chat-overlay-header-img {
+  position: absolute;
+  max-width: 14px;
+  max-height: 14px;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+}
+ 
+.chat-overlay-header-img.open {
+  opacity: 0;
+}
+   
+.absolute-cart-box {
+  display: none;
+}
+ 
+@media only screen and (max-width: 768px) {
+  .chat-overlay {
+    width: 100%;
+    position: fixed;
+    height: 100%;
+  }
+ 
+  .chat-overlay-header-mobile {
+    display: flex;
+    width: inherit;
+    height: 9%;
+    background: #4d5aff;
+  }
+ 
+  .chat-overlay-header-mobile img {
+    height: 30%;
+    padding: 1rem;
+    margin-left: auto;
+  }
+ 
+  .chat-overlay-header-mobile.close {
+    display: none;
+  }
+ 
+  #receiver {
+    border-radius: 0;
+  }
+ 
+  #receiver.close {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+ 
+  #receiver.open {
+    height: 91%;
+    opacity: 1;
+    overflow: hidden;
+  }
+ 
+  .chat-overlay-open {
+    height: 100%;
+    bottom: 0px;
+    right: 0px;
+    }
+ 
+  .chat-overlay-closed {
+        height: 70px;
+    bottom: 24px;
+    right: 24px;
+    }
+ 
+  .chat-overlay-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+}
+</style>
+  </body>
 </html>
